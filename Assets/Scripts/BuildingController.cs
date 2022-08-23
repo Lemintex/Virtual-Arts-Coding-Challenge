@@ -16,12 +16,13 @@ public class BuildingController : MonoBehaviour
     string[] allPrefabNames = { "Cube", "Sphere", "Cylinder", "Wall" };
     int selectedIndex;
 
+    float maxPlaceDistance = 20f;
     float scrollCooldown = 0.05f;
     float lastScrollTime;
     public UnityEvent<Transform> OnShapeChanged;
 
-    float moveSpeed = 7f;
-    float rotateSpeed = 40f;
+    float moveSpeed = 4f;
+    float rotateSpeed = 75f;
     float scaleSpeed = 0.8f;
     float flashesPerSecond = 2f;
 
@@ -304,11 +305,8 @@ public class BuildingController : MonoBehaviour
     // selects the shape the player is looking at
     void SelectShape()
     {
-        //Camera cameraView = GetComponentInChildren<Camera>();
-        //Ray ray = new Ray(cameraView.transform.position, cameraView.transform.forward);
-        //
         RaycastHit hitInfo;
-        if (RaycastWhereLooking(editMask, out hitInfo))//Physics.Raycast(ray, out hitInfo, 20f, editMask))
+        if (RaycastWhereLooking(editMask, out hitInfo))
         {
             // stores shape editing
             editingShape = hitInfo.transform;
@@ -327,7 +325,7 @@ public class BuildingController : MonoBehaviour
         Camera cameraView = GetComponentInChildren<Camera>();
         Ray ray = new Ray(cameraView.transform.position, cameraView.transform.forward);
 
-        return Physics.Raycast(ray, out hitInfo, 20f, mask);
+        return Physics.Raycast(ray, out hitInfo, maxPlaceDistance, mask);
     }
 
     // coroutine for flashing effect on selected shape

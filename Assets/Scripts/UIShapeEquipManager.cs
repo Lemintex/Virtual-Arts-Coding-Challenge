@@ -6,10 +6,10 @@ using UnityEngine.Events;
 public class UIShapeEquipManager : MonoBehaviour
 {
     Transform shapeDisplayed;
-    float cubeSizeModifier = 1.5f;
-    float sphereSizeModifier = 2f;
-    float cylinderSizeModifier = 1.25f;
-    float wallSizeModifier = 0.8f;
+    float cubeSizeModifier = 1.1f;
+    float sphereSizeModifier = 1.5f;
+    float cylinderSizeModifier = 0.9f;
+    float wallSizeModifier = 0.6f;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +37,7 @@ public class UIShapeEquipManager : MonoBehaviour
         // configuring shape so it is placed well and not visible to the player
         shapeDisplayed.localRotation = rotation;
         shapeDisplayed.parent = gameObject.transform;
-        shapeDisplayed.localPosition = Vector3.back;
+        shapeDisplayed.localPosition = Vector3.forward;
         shapeDisplayed.gameObject.layer = LayerMask.NameToLayer("UI");
 
         // the shape cloned was the ghost (transparent) so we need to make it solid again
