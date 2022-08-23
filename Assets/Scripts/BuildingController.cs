@@ -48,6 +48,7 @@ public class BuildingController : MonoBehaviour
         //initialises the layer masks
         buildMask = LayerMask.GetMask("Ground", "Obstacle");
         editMask = LayerMask.GetMask("Obstacle");
+
         // puts the ghost at the origin but makes it invisible
         InitialiseGhost();
         EditGhostVisibility(false);
@@ -338,7 +339,7 @@ public class BuildingController : MonoBehaviour
         while (state == State.EDITING)
         {
             //lerp back and forward between the original color and flash color
-            shapeMaterial.color = Color.Lerp(originalColour, flashingColour, Mathf.PingPong(timer * flashesPerSecond * 2, 1));
+            shapeMaterial.color = Color.Lerp(originalColour, flashingColour, Mathf.PingPong(timer * flashesPerSecond * 2, 1));// first argument is doubled as it has to go from original-flash-original which counts as 2 flashes
             timer += Time.deltaTime;
             yield return null;
         }

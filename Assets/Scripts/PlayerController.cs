@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     float spaceLastPressed;
     float spaceSpamCooldown = 0.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +50,7 @@ public class PlayerController : MonoBehaviour
         //get input for gravity toggle
         if (Input.GetKey(KeyCode.Space))
         {
+            // prevents spam/button pressing for multiple frames
             if (spaceLastPressed + spaceSpamCooldown < Time.time)
             {
                 spaceLastPressed = Time.time;

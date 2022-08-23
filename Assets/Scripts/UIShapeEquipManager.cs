@@ -40,13 +40,6 @@ public class UIShapeEquipManager : MonoBehaviour
         shapeDisplayed.localPosition = Vector3.forward;
         shapeDisplayed.gameObject.layer = LayerMask.NameToLayer("UI");
 
-        // the shape cloned was the ghost (transparent) so we need to make it solid again
-        Renderer renderer = shapeDisplayed.GetComponent<Renderer>();
-        Material cubeMaterial = renderer.material;
-        Color cubeColor = cubeMaterial.color;
-        cubeColor.a = 1f;
-        cubeMaterial.color = cubeColor;
-
         // attach the rotate script so it spins
         shapeDisplayed.gameObject.AddComponent<RotateScript>();
 
